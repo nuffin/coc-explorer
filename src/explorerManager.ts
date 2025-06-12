@@ -1,21 +1,21 @@
-import { HelperEventEmitter, isTest } from 'coc-helper';
+import {HelperEventEmitter, isTest} from 'coc-helper';
 import {
   Disposable,
   disposeAll,
   workspace,
   type ExtensionContext,
 } from 'coc.nvim';
-import { firstValueFrom } from 'rxjs';
-import { argOptions, type ResolvedArgs } from './arg/argOptions';
-import { Args } from './arg/parseArgs';
-import type { BufManager } from './bufManager';
-import { buildExplorerConfig, configLocal } from './config';
-import { tabContainerManager } from './container';
-import { GlobalContextVars } from './contextVariables';
-import { onBufEnter } from './events';
-import { Explorer } from './explorer';
-import { Rooter } from './rooter';
-import { getClipboard } from './source/sources/file/clipboard/clipboard';
+import {firstValueFrom} from 'rxjs';
+import {argOptions, type ResolvedArgs} from './arg/argOptions';
+import {Args} from './arg/parseArgs';
+import type {BufManager} from './bufManager';
+import {buildExplorerConfig, configLocal} from './config';
+import {tabContainerManager} from './container';
+import {GlobalContextVars} from './contextVariables';
+import {onBufEnter} from './events';
+import {Explorer} from './explorer';
+import {Rooter} from './rooter';
+import {getClipboard} from './source/sources/file/clipboard/clipboard';
 import {
   compactI,
   currentBufnr,
@@ -186,11 +186,11 @@ export class ExplorerManager {
     const args = await Args.parse(argStrs, config);
     const argValues = await args.values(argOptions);
     const position = argValues.position;
-    if (position.name === 'floating') {
-      if (!supportedNvimFloating()) {
-        throw new Error('not support floating position in vim');
-      }
-    }
+    // if (position.name === 'floating') {
+    //   if (!supportedNvimFloating()) {
+    //     throw new Error('not support floating position in vim');
+    //   }
+    // }
     const quit = argValues.quit;
 
     const tabid =
